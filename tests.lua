@@ -7,8 +7,8 @@ local msgpack = require('msgpack')
 
 -- do very quick encode / decode tests
 do
-	local bytes = assert(msgpack.encode(1, -5, math.pi, 'Test!', true, false, { a = 1, b = 2 }))
-	local a, b, c, d, e, f, g = assert(msgpack.decode(bytes))
+	local bytes = assert(msgpack.encode_many(1, -5, math.pi, 'Test!', true, false, { a = 1, b = 2 }))
+	local a, b, c, d, e, f, g = assert(msgpack.decode_many(bytes))
 	assert(a == 1)
 	assert(b == -5)
 	assert(c == math.pi)
@@ -292,3 +292,5 @@ test_bin8(string.rep(string.char(255), 255))
 test_bin16(string.rep(string.char(255), 256))
 test_bin16(string.rep(string.char(255), 65535))
 test_bin32(string.rep(string.char(255), 65536))
+
+print('All tests passed successfully!');
